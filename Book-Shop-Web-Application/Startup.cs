@@ -1,7 +1,9 @@
 using Book_Shop_Web_Application.Data;
+using Book_Shop_Web_Application.Data.Cart;
 using Book_Shop_Web_Application.Data.Services;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
@@ -31,6 +33,12 @@ namespace Book_Shop_Web_Application
             services.AddScoped<IPublishersService, PublishersService>();
             services.AddScoped<IAuthorsService, AuthorsService>();
             services.AddScoped<IBooksService, BooksService>();
+            services.AddScoped<IOrdersService, OrdersService>();
+
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+            services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
+
+            services.AddSession();
 
             services.AddControllersWithViews();
         }
@@ -52,6 +60,8 @@ namespace Book_Shop_Web_Application
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseSession();
 
             app.UseAuthorization();
 

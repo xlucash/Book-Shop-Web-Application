@@ -36,7 +36,7 @@
                         <div class="card-footer ">
                             <p class="card-text">
                                 <a class="btn btn-outline-primary float-right" asp-action="Index">Wróć do listy</a>
-                                <a class="btn btn-success text-white"><i class="bi bi-cart-plus"></i> Dodaj do koszyka</a>
+                                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@Model.Id"><i class="bi bi-cart-plus"></i> Dodaj do koszyka</a>
                             </p>
                         </div>
                     </div>
