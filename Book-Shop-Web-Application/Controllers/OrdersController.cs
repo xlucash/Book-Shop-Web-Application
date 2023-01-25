@@ -1,11 +1,15 @@
 ﻿using Book_Shop_Web_Application.Data.Cart;
 using Book_Shop_Web_Application.Data.Services;
+using Book_Shop_Web_Application.Data.Static;
 using Book_Shop_Web_Application.Data.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 using System.Threading.Tasks;
 
 namespace Book_Shop_Web_Application.Controllers
 {
+    [Authorize]
     public class OrdersController : Controller
     {
         private readonly IBooksService _booksService;
@@ -20,8 +24,10 @@ namespace Book_Shop_Web_Application.Controllers
 
         public async Task<IActionResult> Index()
         {
-            string userId = "";
-            var orders = await _ordersService.GetOrdersByUserIdAsync(userId);
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userRole = User.FindFirstValue(ClaimTypes.Role);
+
+            var orders = await _ordersService.GetOrdersByUserIdAndRoleAsync(userId, userRole);
             return View(orders);
 
         }
@@ -61,8 +67,8 @@ namespace Book_Shop_Web_Application.Controllers
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();
-            string userId = "";
-            string userEmailAddress = "";
+            string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
+            string userEmailAddress = User.FindFirstValue(ClaimTypes.Email);
             await _ordersService.StoreOrderAsync(items, userId, userEmailAddress);
             await _shoppingCart.ClearShoppingCartAsync();
             return View("OrderCompleted");

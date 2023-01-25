@@ -1,6 +1,8 @@
 ﻿using Book_Shop_Web_Application.Data;
 using Book_Shop_Web_Application.Data.Services;
+using Book_Shop_Web_Application.Data.Static;
 using Book_Shop_Web_Application.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -9,6 +11,7 @@ using System.Threading.Tasks;
 
 namespace Book_Shop_Web_Application.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class BooksController : Controller
     {
         private readonly IBooksService _service;
@@ -19,6 +22,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         // GET: Books
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allBooks = await _service.GetAllAsync(n => n.Publisher, n => n.Author);
@@ -26,6 +30,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         // GET: books/filter
+        [AllowAnonymous]
         public async Task<IActionResult> Filter(string searchString)
         {
             var allBooks = await _service.GetAllAsync(n => n.Publisher, n => n.Author);
@@ -40,6 +45,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         // GET: books/details/id
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var bookDetails = await _service.GetBookByIdAsync(id);

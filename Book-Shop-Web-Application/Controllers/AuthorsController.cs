@@ -1,12 +1,16 @@
 ﻿using Book_Shop_Web_Application.Data;
 using Book_Shop_Web_Application.Data.Services;
+using Book_Shop_Web_Application.Data.Static;
 using Book_Shop_Web_Application.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 
+
 namespace Book_Shop_Web_Application.Controllers
 {
+    [Authorize(Roles = UserRoles.Admin)]
     public class AuthorsController : Controller
     {
         private readonly IAuthorsService _service;
@@ -15,6 +19,8 @@ namespace Book_Shop_Web_Application.Controllers
         {
             _service = service;
         }
+
+        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var allAuthors = await _service.GetAllAsync();
@@ -40,6 +46,7 @@ namespace Book_Shop_Web_Application.Controllers
 
         //GET: authors/details/id
         [HttpGet]
+        [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
         {
             var authorDetails = await _service.GetByIdAsync(id);

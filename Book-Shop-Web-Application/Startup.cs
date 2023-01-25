@@ -1,10 +1,13 @@
 using Book_Shop_Web_Application.Data;
 using Book_Shop_Web_Application.Data.Cart;
 using Book_Shop_Web_Application.Data.Services;
+using Book_Shop_Web_Application.Models;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -38,6 +41,14 @@ namespace Book_Shop_Web_Application
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
+            services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookContext>();
+            services.AddMemoryCache();
+            services.AddSession();
+            services.AddAuthentication(options =>
+            {
+                options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
+            });
+
             services.AddSession();
 
             services.AddControllersWithViews();
@@ -63,6 +74,7 @@ namespace Book_Shop_Web_Application
 
             app.UseSession();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
@@ -71,6 +83,9 @@ namespace Book_Shop_Web_Application
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");
             });
+
+            AppDbInitializer.Seed(app);
+            AppDbInitializer.SeedUsersAndRolesAsync(app).Wait();
         }
     }
 }
