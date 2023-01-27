@@ -87,8 +87,10 @@ namespace Book_Shop_Web_Application.Controllers
             if (newUserResponse.Succeeded)
             {
                 await _userManager.AddToRoleAsync(newUser, UserRoles.User);
+                return View("RegisterCompleted");
             }
-            return View("RegisterCompleted");
+            TempData["Error"] = "Rejestracja nie powiodła się!";
+            return View(registerVM);
         }
 
         [HttpPost]

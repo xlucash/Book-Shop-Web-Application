@@ -28,7 +28,7 @@ namespace Book_Shop_Web_Application.Data.Cart
             session.SetString("CartId", cartId);
             return new ShoppingCart(context)
             {
-                ShoppingCartId= cartId
+                ShoppingCartId = cartId
             };
         }
 
@@ -93,8 +93,6 @@ namespace Book_Shop_Web_Application.Data.Cart
             _context.ShoppingCartItems.RemoveRange(items);
             await _context.SaveChangesAsync();
         }
-
-
 
     }
 }
