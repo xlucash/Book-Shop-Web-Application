@@ -1,4 +1,5 @@
 ﻿@using Book_Shop_Web_Application.Models.ViewModels;
+@using System.Globalization
 @model ShoppingCartViewModel
 
 @{
@@ -27,8 +28,8 @@
                 <tr>
                     <td class="align-middle">@item.Amount</td>
                     <td class="align-middle">@item.Book.Title</td>
-                    <td class="align-middle">@item.Book.Price.ToString("c")</td>
-                    <td class="align-middle">@((item.Amount*item.Book.Price).ToString("c"))</td>
+                        <td class="align-middle">@item.Book.Price.ToString("c", new CultureInfo("pl-PL"))</td>
+                    <td class="align-middle">@((item.Amount*item.Book.Price).ToString("c", new CultureInfo("pl-PL")))</td>
                     <td class="align-middle">
                         <a class="text-danger" asp-controller="Orders" asp-action="RemoveFromShoppingCart"
                            asp-route-id="@item.Book.Id">
@@ -48,7 +49,7 @@
                     <td colspan="2"></td>
                     <td><b>Podsumowanie:</b></td>
                     <td>
-                        @Model.ShoppingCartTotal.ToString("c")
+                        @Model.ShoppingCartTotal.ToString("c", new CultureInfo("pl-PL"))
                     </td>
                     <td></td>
                 </tr>

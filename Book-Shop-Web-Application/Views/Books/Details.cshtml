@@ -1,4 +1,5 @@
-﻿@model Book_Shop_Web_Application.Models.Book
+﻿@using System.Globalization
+@model Book_Shop_Web_Application.Models.Book
 
 @{
     ViewData["Title"] = "Szczegóły książki";
@@ -29,7 +30,7 @@
                                 <a asp-controller="Publishers" asp-action="Details" asp-route-id="@Model.PublisherId">@Model.Publisher.Name</a>
                             </p>
                             <p class="card-text"><b>Rok publikacji: </b>@Model.YearOfPublication</p>
-                            <p class="card-text"><b>Cena: </b>@Model.Price.ToString("c")</p>
+                        <p class="card-text"><b>Cena: </b>@Model.Price.ToString("c", new CultureInfo("pl-PL"))</p>
                         </div>
                     </div>
                     <div class="col-md-12">
