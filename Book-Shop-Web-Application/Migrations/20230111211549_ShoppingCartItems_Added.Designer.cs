@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Book_Shop_Web_Application.Migrations
 {
-    [DbContext(typeof(BookContext))]
+    [DbContext(typeof(BookDbContext))]
     [Migration("20230111211549_ShoppingCartItems_Added")]
     partial class ShoppingCartItems_Added
     {

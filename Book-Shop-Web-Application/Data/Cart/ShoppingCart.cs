@@ -11,18 +11,18 @@ namespace Book_Shop_Web_Application.Data.Cart
 {
     public class ShoppingCart
     {
-        public BookContext _context { get; set; }
+        public BookDbContext _context { get; set; }
         public string ShoppingCartId { get; set; }
         public List<ShoppingCartItem> ShoppingCartItems { get; set; }
 
-        public ShoppingCart(BookContext context) {
+        public ShoppingCart(BookDbContext context) {
             _context= context;
         }
 
         public static ShoppingCart GetShoppingCart(IServiceProvider services)
         {
             ISession session = services.GetRequiredService<IHttpContextAccessor>()?.HttpContext.Session;
-            var context = services.GetService<BookContext>();
+            var context = services.GetService<BookDbContext>();
 
             string cartId = session.GetString("CartId") ?? Guid.NewGuid().ToString();
             session.SetString("CartId", cartId);

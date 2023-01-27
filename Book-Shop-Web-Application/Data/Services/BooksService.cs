@@ -1,17 +1,18 @@
 ﻿using Book_Shop_Web_Application.Data.Base;
-using Book_Shop_Web_Application.Data.ViewModels;
+using Book_Shop_Web_Application.Models.ViewModels;
 using Book_Shop_Web_Application.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using System.Linq;
 using System.Threading.Tasks;
+using Book_Shop_Web_Application.Data.Interfaces;
 
 namespace Book_Shop_Web_Application.Data.Services
 {
     public class BooksService : EntityBaseRepository<Book>, IBooksService
     {
-        private readonly BookContext _context;
-        public BooksService(BookContext context) : base(context)
+        private readonly BookDbContext _context;
+        public BooksService(BookDbContext context) : base(context)
         {
             _context = context;
         }

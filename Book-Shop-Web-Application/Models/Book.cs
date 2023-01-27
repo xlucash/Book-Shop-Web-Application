@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
-using Book_Shop_Web_Application.Data.Base;
+using Book_Shop_Web_Application.Data.Interfaces;
 
 namespace Book_Shop_Web_Application.Models
 {

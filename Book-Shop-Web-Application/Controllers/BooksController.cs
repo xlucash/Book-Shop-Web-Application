@@ -1,7 +1,7 @@
 ﻿using Book_Shop_Web_Application.Data;
-using Book_Shop_Web_Application.Data.Services;
+using Book_Shop_Web_Application.Data.Interfaces;
 using Book_Shop_Web_Application.Data.Static;
-using Book_Shop_Web_Application.Models;
+using Book_Shop_Web_Application.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;

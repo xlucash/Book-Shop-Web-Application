@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
 
-namespace Book_Shop_Web_Application.Data.Base
+namespace Book_Shop_Web_Application.Data.Interfaces
 {
     public interface IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {

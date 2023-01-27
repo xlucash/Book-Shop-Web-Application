@@ -5,13 +5,14 @@ using System.Threading.Tasks;
 using System.Linq.Expressions;
 using System;
 using System.Linq;
+using Book_Shop_Web_Application.Data.Interfaces;
 
 namespace Book_Shop_Web_Application.Data.Base
 {
     public class EntityBaseRepository<T> : IEntityBaseRepository<T> where T : class, IEntityBase, new()
     {
-        private readonly BookContext _context;
-        public EntityBaseRepository(BookContext context)
+        private readonly BookDbContext _context;
+        public EntityBaseRepository(BookDbContext context)
         {
             _context = context;
         }

@@ -1,4 +1,5 @@
-﻿using Book_Shop_Web_Application.Models;
+﻿using Book_Shop_Web_Application.Data.Interfaces;
+using Book_Shop_Web_Application.Models;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,8 +9,8 @@ namespace Book_Shop_Web_Application.Data.Services
 {
     public class OrdersService : IOrdersService
     {
-        private readonly BookContext _context;
-        public OrdersService(BookContext context)
+        private readonly BookDbContext _context;
+        public OrdersService(BookDbContext context)
         {
             _context = context;
         }

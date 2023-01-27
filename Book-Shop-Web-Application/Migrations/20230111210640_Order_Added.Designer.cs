@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace Book_Shop_Web_Application.Migrations
 {
-    [DbContext(typeof(BookContext))]
+    [DbContext(typeof(BookDbContext))]
     [Migration("20230111210640_Order_Added")]
     partial class Order_Added
     {

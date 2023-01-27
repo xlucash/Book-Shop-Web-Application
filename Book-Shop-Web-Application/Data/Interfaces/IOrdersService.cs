@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Book_Shop_Web_Application.Data.Services
+namespace Book_Shop_Web_Application.Data.Interfaces
 {
     public interface IOrdersService
     {

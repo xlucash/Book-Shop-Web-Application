@@ -1,5 +1,6 @@
 using Book_Shop_Web_Application.Data;
 using Book_Shop_Web_Application.Data.Cart;
+using Book_Shop_Web_Application.Data.Interfaces;
 using Book_Shop_Web_Application.Data.Services;
 using Book_Shop_Web_Application.Models;
 using Microsoft.AspNetCore.Authentication.Cookies;
@@ -20,7 +21,7 @@ using System.Threading.Tasks;
 var builder = WebApplication.CreateBuilder(args);
 
 //DbContext configuration
-builder.Services.AddDbContext<BookContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+builder.Services.AddDbContext<BookDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 //Services configuration
 builder.Services.AddScoped<IPublishersService, PublishersService>();
@@ -32,7 +33,7 @@ builder.Services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
 builder.Services.AddScoped(sc => ShoppingCart.GetShoppingCart(sc));
 
 //Authentication and authorization
-builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookContext>();
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>().AddEntityFrameworkStores<BookDbContext>();
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddAuthentication(options =>

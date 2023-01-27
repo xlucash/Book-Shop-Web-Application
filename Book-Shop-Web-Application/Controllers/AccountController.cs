@@ -1,6 +1,6 @@
 ﻿using Book_Shop_Web_Application.Data;
 using Book_Shop_Web_Application.Data.Static;
-using Book_Shop_Web_Application.Data.ViewModels;
+using Book_Shop_Web_Application.Models.ViewModels;
 using Book_Shop_Web_Application.Models;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -13,8 +13,8 @@ namespace Book_Shop_Web_Application.Controllers
     {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly SignInManager<ApplicationUser> _signInManager;
-        private readonly BookContext _context;
-        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BookContext context)
+        private readonly BookDbContext _context;
+        public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, BookDbContext context)
         {
             _userManager = userManager;
             _signInManager = signInManager;

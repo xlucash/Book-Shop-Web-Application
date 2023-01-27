@@ -4,9 +4,9 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Book_Shop_Web_Application.Data
 {
-    public class BookContext : IdentityDbContext<ApplicationUser>
+    public class BookDbContext : IdentityDbContext<ApplicationUser>
     {
-        public BookContext(DbContextOptions<BookContext> dbContextOptions) : base(dbContextOptions)
+        public BookDbContext(DbContextOptions<BookDbContext> dbContextOptions) : base(dbContextOptions)
         {
 
         }

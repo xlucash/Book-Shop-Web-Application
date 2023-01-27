@@ -1,7 +1,7 @@
 ﻿using Book_Shop_Web_Application.Data.Cart;
-using Book_Shop_Web_Application.Data.Services;
+using Book_Shop_Web_Application.Data.Interfaces;
 using Book_Shop_Web_Application.Data.Static;
-using Book_Shop_Web_Application.Data.ViewModels;
+using Book_Shop_Web_Application.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;

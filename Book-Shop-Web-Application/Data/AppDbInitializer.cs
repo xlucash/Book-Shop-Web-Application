@@ -14,7 +14,7 @@ namespace Book_Shop_Web_Application.Data
         {
             using (var serviceScope = applicationBuilder.ApplicationServices.CreateScope())
             {
-                var context = serviceScope.ServiceProvider.GetService<BookContext>();
+                var context = serviceScope.ServiceProvider.GetService<BookDbContext>();
 
                 context.Database.EnsureCreated();
 

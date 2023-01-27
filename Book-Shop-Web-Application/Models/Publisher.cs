@@ -1,4 +1,4 @@
-﻿using Book_Shop_Web_Application.Data.Base;
+﻿using Book_Shop_Web_Application.Data.Interfaces;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Xml.Linq;
