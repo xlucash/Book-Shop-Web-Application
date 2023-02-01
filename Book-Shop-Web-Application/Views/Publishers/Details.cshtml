@@ -7,27 +7,23 @@
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Szczegóły dla @Model.Name</h1>
+            <h1>Informacje o Wydawnictwie</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <div class="form-group text-center">
                     <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
+                    <div class="form-group text-left">
+                        <h4>Wydawnictwo</h4>
+                        <p>@Model.Name</p>
+                        <h4>Opis</h4>
+                        <p>@Model.Description</p>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="LogoPictureURL" class="control-label"></label>
-                    <input asp-for="LogoPictureURL" class="form-control" readonly />
+                    <label asp-for="LogoPictureURL" class="control-label" hidden></label>
+                    <input asp-for="LogoPictureURL" class="form-control" hidden />
                     <span asp-validation-for="LogoPictureURL" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" readonly />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <input asp-for="Description" class="form-control" readonly />
-                    <span asp-validation-for="Description" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">

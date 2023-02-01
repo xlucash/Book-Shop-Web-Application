@@ -36,20 +36,21 @@
                             </li>
                         }
                     </ul>
-                        <form class="input-group" asp-controller="Books" asp-action="Filter" style="padding-top: 5px;">
-                            <div class="col-xs-2">
-                                <input name="searchString" class="form-control" type="text" placeholder="Wyszukaj książkę..." aria-label="Recipient's username" aria-describedby="button-addon2">
-                            </div>
-                            <div class="input-group-btn">
-                                <button class="btn btn-outline-success ms-auto" type="submit"><i class="bi bi-search"></i></button>
-                            </div>
-                        </form>
 
-                        <ul class="navbar-nav">
-                            @await Component.InvokeAsync("ShoppingCartSummary")
-                        </ul>
+                    <ul class="navbar-nav">
+                        @await Component.InvokeAsync("ShoppingCartSummary")
+                    </ul>
 
-                        <partial name="_Identity.cshtml" />
+                    <form class="form-inline my-2 my-lg-0" asp-controller="Books" asp-action="Filter" style="padding-top: 5px;">
+                        <div class="col-xs-2">
+                            <input name="searchString" class="form-control" type="text" placeholder="Wyszukaj książkę..." aria-label="Recipient's username" aria-describedby="button-addon2">
+                        </div>
+                        <div class="input-group-btn">
+                            <button class="btn btn-outline-success ms-auto" type="submit"><i class="bi bi-search"></i></button>
+                        </div>
+                    </form>
+
+                    <partial name="_Identity.cshtml" />
                 </div>
             </div>
         </nav>

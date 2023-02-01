@@ -7,27 +7,23 @@
 <div class="row text">
     <div class="col-md-8 offset-2">
         <p>
-            <h1>Szczegóły dla @Model.FullName</h1>
+            <h1>Informacje o Autorze</h1>
         </p>
         <div class="row">
             <div class="col-md-8 offset-2">
                 <div class="form-group text-center">
                     <img class="border-info rounded-circle" style="max-width: 150px" id="ProfilePicturePreview" />
+                    <div class="form-group text-left">
+                        <h4>Autor</h4>
+                        <p>@Model.FullName</p>
+                        <h4>Opis</h4>
+                        <p>@Model.Bio</p>
+                    </div>
                 </div>
                 <div class="form-group">
-                    <label asp-for="ProfilePictureURL" class="control-label"></label>
-                    <input asp-for="ProfilePictureURL" class="form-control" readonly />
+                    <label asp-for="ProfilePictureURL" class="control-label" hidden></label>
+                    <input asp-for="ProfilePictureURL" class="form-control" hidden />
                     <span asp-validation-for="ProfilePictureURL" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="FullName" class="control-label"></label>
-                    <input asp-for="FullName" class="form-control" readonly />
-                    <span asp-validation-for="FullName" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Bio" class="control-label"></label>
-                    <input asp-for="Bio" class="form-control" readonly />
-                    <span asp-validation-for="Bio" class="text-danger"></span>
                 </div>
 
                 <div class="form-group">
@@ -35,7 +31,7 @@
                     {
                         <a class="btn btn-outline-success float-right" asp-action="Edit" asp-route-id="@Model.Id">Edytuj</a>
                     }
-                    <a class="btn btn-outline-secondary" asp-action="Index">Pokaż wszystkie</a>
+                    <a class="btn btn-outline-secondary" asp-action="Index">Pokaż wszystkich</a>
                 </div>
             </div>
         </div>

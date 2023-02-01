@@ -43,12 +43,15 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
     options.Password.RequireNonAlphanumeric = false;
     options.Password.RequireDigit = false;
 }).AddEntityFrameworkStores<BookDbContext>();
+
 builder.Services.AddMemoryCache();
 builder.Services.AddSession();
 builder.Services.AddAuthentication(options =>
 {
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 });
+
+builder.Services.AddRazorPages();
 
 builder.Services.AddControllersWithViews();
 
@@ -75,11 +78,93 @@ app.UseAuthorization();
 
 app.UseAuthorization();
 
+
 app.UseEndpoints(endpoints =>
 {
     endpoints.MapControllerRoute(
+        name: "books",
+        pattern: "/ksiazki",
+        defaults: new { controller = "Books", action = "Index" }
+        );
+    endpoints.MapControllerRoute(
+        name: "books",
+        pattern: "/ksiazki/{id}/szczegoly",
+        defaults: new { controller = "Books", action = "Details" }
+        );
+    endpoints.MapControllerRoute(
+        name: "books",
+        pattern: "/ksiazki/{id}/edytuj",
+        defaults: new { controller = "Books", action = "Edit" }
+        );
+    endpoints.MapControllerRoute(
+        name: "books",
+        pattern: "/ksiazki/dodaj",
+        defaults: new { controller = "Books", action = "Create" }
+        );
+    endpoints.MapControllerRoute(
+        name: "orders",
+        pattern: "/ksiazki/zamowienia",
+        defaults: new { controller = "Orders", action = "Index" }
+        );
+    endpoints.MapControllerRoute(
+        name: "orders",
+        pattern: "/ksiazki/koszyk/dodaj",
+        defaults: new { controller = "Orders", action = "AddToShoppingCart" }
+        );
+    endpoints.MapControllerRoute(
+        name: "orders",
+        pattern: "/ksiazki/koszyk/usun",
+        defaults: new { controller = "Orders", action = "RemoveFromShoppingCart" }
+        );
+    endpoints.MapControllerRoute(
+        name: "orders",
+        pattern: "/ksiazki/koszyk/sfinalizuj",
+        defaults: new { controller = "Orders", action = "CompleteOrder" }
+        );
+    endpoints.MapControllerRoute(
+        name: "orders",
+        pattern: "/ksiazki/koszyk/podsumowanie",
+        defaults: new { controller = "Orders", action = "ShoppingCart" }
+        );
+    endpoints.MapControllerRoute(
+        name: "authors",
+        pattern: "/autorzy",
+        defaults: new { controller = "Authors", action = "Index" }
+        );
+    endpoints.MapControllerRoute(
+        name: "authors",
+        pattern: "/autorzy/szczegoly",
+        defaults: new { controller = "Authors", action = "Details" }
+        );
+    endpoints.MapControllerRoute(
+        name: "publishers",
+        pattern: "/wydawnictwa",
+        defaults: new { controller = "Publishers", action = "Index" }
+        );
+    endpoints.MapControllerRoute(
+        name: "publishers",
+        pattern: "/wydawnictwa/szczegoly",
+        defaults: new { controller = "Publishers", action = "Details" }
+        );
+    endpoints.MapControllerRoute(
+        name: "account",
+        pattern: "/uzytkownicy",
+        defaults: new { controller = "Account", action = "Users" }
+        );
+    endpoints.MapControllerRoute(
+        name: "account",
+        pattern: "/logowanie",
+        defaults: new { controller = "Account", action = "Login" }
+        );
+    endpoints.MapControllerRoute(
+        name: "account",
+        pattern: "/rejestracja",
+        defaults: new { controller = "Account", action = "Register" }
+        );
+    endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Books}/{action=Index}/{id?}");
+    endpoints.MapRazorPages();
 });
 
 

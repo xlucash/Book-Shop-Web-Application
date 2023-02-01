@@ -7,42 +7,32 @@
 <div class="row">
     @foreach (var item in Model)
     {
-        <div class="col-md-4 col-xs-6 border-primary mb-3">
-            <div class="card mb-3" style="max-width: 540px;">
-                <div class="row g-0">
-                    <div class="col-md-12">
-                        <div class="card-header text-white bg-info">
-                            <p class="card-text">
-                                <h5 class="card-title">
-                                    @item.Title
-                                    @if(User.Identity.IsAuthenticated && User.IsInRole("Admin"))
-                                    {
-                                        <a class="text-white float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
-                                    }
-                                </h5>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <img src="@item.ImageURL" width="100%" alt="@item.Title">
-                    </div>
-                    <div class="col-md-6">
-                        <div class="card-body">
-                            <p class="card-text">@item.Description</p>
-                            <p class="card-text"><b>Autor: </b>@item.Author.FullName</p>
-                            <p class="card-text"><b>Wydawnictwo: </b>@item.Publisher.Name</p>
-                            <p class="card-text"><b>Rok publikacji: </b>@item.YearOfPublication</p>
-                            <p class="card-text"><b>Cena: </b>@item.Price.ToString("c", new CultureInfo("pl-PL"))</p>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="card-footer ">
-                            <p class="card-text">
-                                <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Szczegóły</a>
-                                <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Dodaj do koszyka</a>
-                            </p>
-                        </div>
-                    </div>
+        <div class="col-md-3 col-xs-6 border-primary mb-3">
+            <div class="card mb-4 shadow-lg p-2 mb-2 bg-body rounded" style="max-width: 350px;">
+                <div class="col-md-3 offset-1">
+                    <img src="@item.ImageURL" alt="@item.Title">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">
+                        @item.Title
+                        @if (User.Identity.IsAuthenticated && User.IsInRole("Admin"))
+                        {
+                            <a class="text-black float-right" asp-action="Edit" asp-route-id="@item.Id"><i class="bi bi-pencil-square"></i></a>
+                        }
+                    </h5>
+                    <p class="card-text" style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis">@item.Description</p>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><b>Autor: </b>@item.Author.FullName</li>
+                    <li class="list-group-item"><b>Wydawnictwo: </b>@item.Publisher.Name</li>
+                    <li class="list-group-item"><b>Rok publikacji: </b>@item.YearOfPublication</li>
+                    <li class="list-group-item"><b>Cena: </b>@item.Price.ToString("c", new CultureInfo("pl-PL"))</li>
+                </ul>
+                <div class="card-body">
+                    <p class="card-text">
+                        <a class="btn btn-outline-primary float-right" asp-action="Details" asp-route-id="@item.Id"><i class="bi bi-eye-fill"></i> Szczegóły</a>
+                        <a class="btn btn-success text-white" asp-controller="Orders" asp-action="AddToShoppingCart" asp-route-id="@item.Id"><i class="bi bi-cart-plus"></i> Dodaj do koszyka</a>
+                    </p>
                 </div>
             </div>
         </div>

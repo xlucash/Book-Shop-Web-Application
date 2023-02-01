@@ -3,6 +3,7 @@
 
 @if(!User.Identity.IsAuthenticated)
 {
+    <span style="padding: 5px;"></span>
     <a class="btn btn-outline-success my-2 my-sm-0" asp-controller="Account" asp-action="Login">
         <i class="bi bi-box-arrow-in-right"></i> Zaloguj się
     </a>
@@ -13,8 +14,9 @@
 } else
 {
     <div class="dropdown">
+        <span style="padding: 5px;"></span>
         <button class="btn btn-outline-success dropdown-toggle" type="button" id="profile-btn" data-toggle="dropdown" aria-expanded="false">
-            <i class="bi bi-person-badge"></i> Hello @UserManager.GetUserName(User)
+            <i class="bi bi-person-badge"></i> Witaj @UserManager.GetUserName(User)
         </button>
         <ul class="dropdown-menu" aria-labelledby="profile-btn">
             <li>
