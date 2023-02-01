@@ -22,6 +22,7 @@ namespace Book_Shop_Web_Application.Controllers
             _ordersService = ordersService;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -31,6 +32,8 @@ namespace Book_Shop_Web_Application.Controllers
             return View(orders);
 
         }
+
+        [HttpGet]
         public IActionResult ShoppingCart()
         {
             var items = _shoppingCart.GetShoppingCartItems();
@@ -44,6 +47,8 @@ namespace Book_Shop_Web_Application.Controllers
             return View(response);
         }
 
+
+        [HttpPost]
         public async Task<IActionResult> AddToShoppingCart(int id)
         {
             var item = await _booksService.GetBookByIdAsync(id);
@@ -54,6 +59,7 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
+        [HttpPost]
         public async Task<IActionResult> RemoveFromShoppingCart(int id)
         {
             var item = await _booksService.GetBookByIdAsync(id);
@@ -64,6 +70,7 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
+        [HttpPost]
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();

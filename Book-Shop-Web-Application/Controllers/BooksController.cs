@@ -21,16 +21,16 @@ namespace Book_Shop_Web_Application.Controllers
             _service=service;
         }
 
-        // GET: Books
         [AllowAnonymous]
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var allBooks = await _service.GetAllAsync(n => n.Publisher, n => n.Author);
             return View(allBooks);
         }
 
-        // GET: books/filter
         [AllowAnonymous]
+        [HttpGet]
         public async Task<IActionResult> Filter(string searchString)
         {
             var allBooks = await _service.GetAllAsync(n => n.Publisher, n => n.Author);
@@ -44,15 +44,15 @@ namespace Book_Shop_Web_Application.Controllers
             return View("Index", allBooks);
         }
 
-        // GET: books/details/id
         [AllowAnonymous]
+        [HttpGet]
         public async Task<IActionResult> Details(int id)
         {
             var bookDetails = await _service.GetBookByIdAsync(id);
             return View(bookDetails);
         }
 
-        // GET: books/create
+        [HttpGet]
         public async Task<IActionResult> Create()
         {
             var bookDropdownData = await _service.GetBookDropdownValues();
@@ -62,7 +62,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View();
         }
 
-        // POST: books/create
         [HttpPost]
         public async Task<IActionResult> Create(BookViewModel book)
         {
@@ -78,7 +77,6 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //GET: books/edit/id
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -106,7 +104,6 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
 
-        // POST: books/edit/id
         [HttpPost]
         public async Task<IActionResult> Edit(int id,BookViewModel book)
         {

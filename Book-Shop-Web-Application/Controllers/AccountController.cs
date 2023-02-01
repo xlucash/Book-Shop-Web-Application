@@ -23,11 +23,14 @@ namespace Book_Shop_Web_Application.Controllers
             _context = context;
         }
 
+        [HttpGet]
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
             return View(users);
         }
+
+        [HttpGet]
         public IActionResult Login()
         {
             var response = new LoginViewModel();
@@ -60,6 +63,7 @@ namespace Book_Shop_Web_Application.Controllers
             return View(loginVM);
         }
 
+        [HttpGet]
         public IActionResult Register()
         {
             var response = new RegisterViewModel();
@@ -102,6 +106,7 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction("Index", "Books");
         }
 
+        [HttpGet]
         public IActionResult AccessDenied(string returnUrl)
         {
             return View();

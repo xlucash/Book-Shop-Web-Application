@@ -152,16 +152,6 @@ app.UseEndpoints(endpoints =>
         defaults: new { controller = "Account", action = "Users" }
         );
     endpoints.MapControllerRoute(
-        name: "account",
-        pattern: "/logowanie",
-        defaults: new { controller = "Account", action = "Login" }
-        );
-    endpoints.MapControllerRoute(
-        name: "account",
-        pattern: "/rejestracja",
-        defaults: new { controller = "Account", action = "Register" }
-        );
-    endpoints.MapControllerRoute(
         name: "default",
         pattern: "{controller=Books}/{action=Index}/{id?}");
     endpoints.MapRazorPages();

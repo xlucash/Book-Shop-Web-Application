@@ -21,20 +21,19 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         [AllowAnonymous]
+        [HttpGet]
         public async Task<IActionResult> Index()
         {
             var allAuthors = await _service.GetAllAsync();
             return View(allAuthors);
         }
 
-        // GET: authors/create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: authors/create
         [HttpPost]
         public async Task<IActionResult> Create([Bind("ProfilePictureURL,FullName,Bio")] Author author)
         {
@@ -44,7 +43,6 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        //GET: authors/details/id
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
@@ -54,7 +52,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View(authorDetails);
         }
 
-        // GET: authors/edit/id
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -63,7 +60,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View(authorDetails);
         }
 
-        // POST: authors/edit/1
         [HttpPost]
         public async Task<IActionResult> Edit(int id, [Bind("Id,ProfilePictureURL,FullName,Bio")] Author author)
         {
@@ -73,7 +69,6 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET: authors/delete/id
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -82,7 +77,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View(authorDetails);
         }
 
-        // POST: authors/delete/1
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirm(int id)
         {

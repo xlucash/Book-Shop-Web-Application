@@ -25,7 +25,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View(allPublishers);
         }
 
-        // GET: publishers/details/id
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Details(int id)
@@ -35,14 +34,12 @@ namespace Book_Shop_Web_Application.Controllers
             return View(publisherDetails);
         }
 
-        // GET: publishers/create
         [HttpGet]
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: publishers/create
         [HttpPost]
         public async Task<IActionResult> Create([Bind("LogoPictureURL,Name,Description")] Publisher publisher)
         {
@@ -52,7 +49,6 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        // GET publishers/edit/id
         [HttpGet]
         public async Task<IActionResult> Edit(int id)
         {
@@ -61,7 +57,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View(publisherDetails);
         }
 
-        // POST: publishers/edit
         [HttpPost]
         public async Task<IActionResult> Edit(int id,[Bind("Id,LogoPictureURL,Name,Description")] Publisher publisher)
         {
@@ -75,7 +70,6 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
 
-        // GET publishers/delete/id
         [HttpGet]
         public async Task<IActionResult> Delete(int id)
         {
@@ -84,7 +78,6 @@ namespace Book_Shop_Web_Application.Controllers
             return View(publisherDetails);
         }
 
-        // POST: publishers/delete/id
         [HttpPost, ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
