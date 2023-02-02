@@ -47,8 +47,7 @@ namespace Book_Shop_Web_Application.Controllers
             return View(response);
         }
 
-
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> AddToShoppingCart(int id)
         {
             var item = await _booksService.GetBookByIdAsync(id);
@@ -59,7 +58,7 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> RemoveFromShoppingCart(int id)
         {
             var item = await _booksService.GetBookByIdAsync(id);
@@ -70,7 +69,7 @@ namespace Book_Shop_Web_Application.Controllers
             return RedirectToAction(nameof(ShoppingCart));
         }
 
-        [HttpPost]
+        [HttpGet]
         public async Task<IActionResult> CompleteOrder()
         {
             var items = _shoppingCart.GetShoppingCartItems();

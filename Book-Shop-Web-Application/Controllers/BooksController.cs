@@ -30,7 +30,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         [AllowAnonymous]
-        [HttpGet]
+        [HttpPost]
         public async Task<IActionResult> Filter(string searchString)
         {
             var allBooks = await _service.GetAllAsync(n => n.Publisher, n => n.Author);
