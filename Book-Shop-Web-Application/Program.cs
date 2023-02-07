@@ -51,6 +51,8 @@ builder.Services.AddAuthentication(options =>
     options.DefaultScheme = CookieAuthenticationDefaults.AuthenticationScheme;
 });
 
+builder.Services.AddAntiforgery();
+
 builder.Services.AddRazorPages();
 
 builder.Services.AddControllersWithViews();

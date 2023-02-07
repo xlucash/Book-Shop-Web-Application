@@ -24,6 +24,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         [HttpGet]
+        [Authorize(Roles = UserRoles.Admin)]
         public async Task<IActionResult> Users()
         {
             var users = await _context.Users.ToListAsync();
@@ -39,6 +40,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Login(LoginViewModel loginVM)
         {
             if (!ModelState.IsValid) return View(loginVM);
@@ -72,6 +74,7 @@ namespace Book_Shop_Web_Application.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> Register(RegisterViewModel registerVM)
         {
             if (!ModelState.IsValid) return View(registerVM);
