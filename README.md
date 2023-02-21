@@ -4,8 +4,5 @@
 <p>The application was developed using C#, ASP.NET Core, Entity Framework, MSSQL. </p>
 <p>Project created for the purposes of studying and for the subject of "Dynamic Web Services in ASP .NET". </p>
 
-## Live
-<p><a href="https://bookshop-app.azurewebsites.net">bookshop-app.azurewebsites.net</a></p>
-
 ## Preview
 <img src="https://i.imgur.com/vIVY1YQ.png">
